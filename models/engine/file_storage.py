@@ -70,7 +70,7 @@ class FileStorage:
             None if not found """
         obj_dict = self.all(cls)
         for key, value in obj_dict.items():
-            obj_str = cls + '.' + id
+            obj_str = cls.__name__ + '.' + id
             if key == obj_str:
                 return (value)
         return (None)
