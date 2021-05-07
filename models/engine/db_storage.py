@@ -85,10 +85,8 @@ class DBStorage:
         """ count method: Returns the number of objects in storage matching
             the given class. If no class is passed, returns the count of all
             objects in storage. """
-        obj_count = 0
-        obj_num = self.all(cls)
-        obj_count = len(obj_num)
-        return (obj_count)
+        obj_num = models.storage.all(cls)
+        return (len(obj_num))
 
     def close(self):
         """call remove() method on the private session attribute"""
