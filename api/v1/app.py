@@ -8,7 +8,6 @@ from flask_cors import CORS
 import os
 
 
-
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True  # for printing
