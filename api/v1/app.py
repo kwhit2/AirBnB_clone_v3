@@ -10,8 +10,8 @@ import os
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
-app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True  # for printing
-app.register_blueprint(app_views)  # register BP app_views 2 Flask instance app
+app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
+app.register_blueprint(app_views)
 HBNB_API_HOST = os.getenv("HBNB_API_HOST")
 HBNB_API_PORT = os.getenv("HBNB_API_PORT")
 
