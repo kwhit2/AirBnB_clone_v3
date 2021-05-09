@@ -3,8 +3,10 @@
 
 
 from api.v1.views import app_views
-from flask import jsonify, make_response
+from flask import jsonify, make_response, abort, request
 from models.base_model import BaseModel
+from models.state import State
+from models import storage
 
 
 @app_views.route('/states', method=["GET"], strict_slashes=False)
@@ -42,7 +44,7 @@ def create_state():
     data_req = request.get_json
     if not data_req:
         return (make_response(jsonify({'error': 'Not a JSON'}), 400))
-    if "name" not in data_req.items():
+    if "name" not in data_req.keys():
         return (make_response(jsonify({'error': 'Missing name'}), 400))
     new_state_obj = State(**data_req)
     new_state_obj.save()
@@ -63,5 +65,4 @@ def update_state():
         if key not in ignore_keys:
             setattr(get_id, key, value)
     get_id.save()
-    get_id_dict = get_id.to_dict()
-    return (jsonify(get_id_dict), 200)
+    return (jsonify(get_id_dict.to_dict()), 200)
