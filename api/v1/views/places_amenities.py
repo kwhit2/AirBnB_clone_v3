@@ -18,9 +18,9 @@ def amenity_view(place_id):
     get_id = storage.get(Place, place_id)
     if get_id is None:
         abort(404)
-    amenity_dict = storage.all(Amenity)
+    amenity_dict = get_id.amenities
     amenity_list = []
-    for value in amenity_dict.values():
+    for value in amenity_dict:
         if value.place_id == place_id:
             amenity_list.append(value.to_dict())
     return (jsonify(amenity_list))
