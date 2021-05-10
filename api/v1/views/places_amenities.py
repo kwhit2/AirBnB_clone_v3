@@ -39,12 +39,11 @@ def places_delete(place_id, amenity_id):
     amenities_object = plac_id.amenities
     if amen_id not in amenities_object:
         abort(404)
-    else:
-        for item in amenities_object:
-            if item.id == amenity_id:
-                amenities_object.remove(item)
-                storage.save()
-                return (jsonify({}), 200)
+    for item in amenities_object:
+        if item.id == amenity_id:
+            amenities_object.remove(item)
+            storage.save()
+            return (jsonify({}), 200)
 
 
 @app_views.route('/places/<place_id>/amenities/<amenity_id>', methods=["POST"],
