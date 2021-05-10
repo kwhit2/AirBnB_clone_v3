@@ -60,8 +60,8 @@ def create_review(place_id):
     userId = storage.get(User, data_req["user_id"])
     if userId is None:
         abort(404)
-    if "name" not in data_req.keys():
-        return (make_response(jsonify({'error': 'Missing name'}), 400))
+    if "text" not in data_req.keys():
+        return (make_response(jsonify({'error': 'Missing text'}), 400))
     data_req["place_id"] = place_id
     new_review_obj = Review(**data_req)
     new_review_obj.save()
