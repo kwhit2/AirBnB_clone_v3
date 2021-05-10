@@ -11,7 +11,7 @@ def users_view():
     """ return a jsonified user objects """
     users_list = []
     for value in storage.all(User).values():
-        states_list.append(value.to_dict())
+        users_list.append(value.to_dict())
     return (jsonify(users_list))
 
 
@@ -42,8 +42,10 @@ def create_user():
     data_req = request.get_json()
     if not data_req:
         return (make_response(jsonify({'error': 'Not a JSON'}), 400))
-    if "name" not in data_req.keys():
-        return (make_response(jsonify({'error': 'Missing name'}), 400))
+    if "email" not in data_req.keys():
+        return (make_response(jsonify({'error': 'Missing email'}), 400))
+    if "password" not in data_req.keys():
+        return (make_response(jsonify({'error': 'Missing password'}), 400))
     new_user_obj = User(**data_req)
     new_user_obj.save()
     return (jsonify(new_user_obj.to_dict()), 201)
