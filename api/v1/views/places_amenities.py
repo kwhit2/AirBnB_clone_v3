@@ -10,6 +10,7 @@ from models.amenity import Amenity
 from models.place import Place
 from models import storage
 
+
 @app_views.route('/places/<place_id>/amenities', methods=["GET"],
                  strict_slashes=False)
 def amenity_view(place_id):
