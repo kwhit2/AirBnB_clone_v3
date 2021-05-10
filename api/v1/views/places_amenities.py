@@ -21,8 +21,7 @@ def amenity_view(place_id):
     amenity_dict = get_id.amenities
     amenity_list = []
     for value in amenity_dict:
-        if value.place_id == place_id:
-            amenity_list.append(value.to_dict())
+        amenity_list.append(value.to_dict())
     return (jsonify(amenity_list))
 
 
