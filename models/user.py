@@ -10,6 +10,7 @@ from sqlalchemy.orm import relationship
 
 
 class User(BaseModel, Base):
+
     """Representation of a user """
     if models.storage_t == 'db':
         __tablename__ = 'users'
@@ -32,5 +33,4 @@ class User(BaseModel, Base):
     def __setattr__(self, name, value):
         if name is "password":
             hash_pass = hashlib.md5(hash_pass.encode()).hexdigest()
-        super.().__setattr__(name, value)
-        
+        super().__setattr__(name, value)
